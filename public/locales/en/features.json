@@ -1,0 +1,37 @@
+{
+  "badge": "Why Choose Us? 🚀",
+  "title": "Everything You Need to Manage <highlight>Your Legal Docs</highlight> Smartly",
+  "subtitle": "Integrated tools designed to save time, ensure legal accuracy, and improve your daily workflow.",
+  "features": [
+    {
+      "icon": "shield",
+      "title": "Advanced Security & Privacy",
+      "desc": "End-to-end encryption, secure cloud storage, and full compliance with local and international data regulations."
+    },
+    {
+      "icon": "zap",
+      "title": "Smart & Fast Editor",
+      "desc": "Intuitive drag-and-drop interface with dynamic templates that auto-adapt to your data and save you time."
+    },
+    {
+      "icon": "check-circle",
+      "title": "100% Legally Approved",
+      "desc": "All templates reviewed and approved by lawyers and legal advisors to ensure validity and legal strength."
+    },
+    {
+      "icon": "cloud",
+      "title": "Secure Cloud Storage",
+      "desc": "Store documents in one place, access from any device, and share via temporary, secure links."
+    },
+    {
+      "icon": "file-text",
+      "title": "Multi-Format Export",
+      "desc": "Convert documents to PDF, Word, or DOCX with high quality, preserving formatting and signatures."
+    },
+    {
+      "icon": "headphones",
+      "title": "24/7 Customer Support",
+      "desc": "Dedicated support team ready to assist you anytime via live chat, email, or phone."
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+/* =========================
+   CTA SECTION - High Converting
+========================= */
+
+.section {
+  position: relative;
+  padding: 5rem 2rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* الخلفية الديناميكية */
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 60%);
+  opacity: 0.12;
+  filter: blur(120px);
+  top: -20%;
+  right: -10%;
+  animation: floatOrb 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-30px, 20px) scale(1.05); }
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.15;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 70%);
+}
+
+/* الحاوية */
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.highlight {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0;
+}
+
+/* الأزرار */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: white;
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 2px solid var(--border-primary);
+}
+
+.btnSecondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--color-primary);
+}
+
+.icon {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.btnPrimary:hover .icon {
+  transform: translateX(3px);
+}
+
+.btnSecondary:hover .icon {
+  transform: rotate(10deg);
+}
+
+/* شارات الثقة */
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  border: 1px solid var(--border-primary);
+}
+
+/* Skeleton */
+.skeleton {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.skeletonTitle { height: 48px; width: 85%; max-width: 700px; }
+.skeletonSubtitle { height: 20px; width: 70%; max-width: 500px; }
+.skeletonButtons { display: flex; gap: 1rem; justify-content: center; margin-top: 0.5rem; }
+.skeletonBtn { height: 48px; width: 160px; border-radius: 12px; }
+.skeletonTrust { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
+.skeletonBadge { height: 32px; width: 140px; border-radius: 100px; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* Dark Theme */
+[data-theme="dark"] .orb { opacity: 0.18; }
+[data-theme="dark"] .grid { opacity: 0.08; }
+[data-theme="dark"] .btnSecondary { border-color: var(--border-secondary); }
+[data-theme="dark"] .badge { background: rgba(30, 41, 59, 0.6); border-color: var(--border-secondary); }
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section { padding: 4rem 1.25rem; }
+  .container { gap: 1.75rem; }
+  .actions { flex-direction: column; align-items: stretch; }
+  .btnPrimary, .btnSecondary { width: 100%; }
+  .trustBadges { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .badge { width: 100%; max-width: 280px; justify-content: center; }
+}
+
+/* RTL Auto-Support */
+/* Flexbox & Grid يتعاملان تلقائياً مع dir="rtl" */
+/* لا حاجة لقواعد إضافية */
+
+/* تحسين الأداء */
+.btnPrimary, .btnSecondary, .icon, .orb {
+  will-change: transform;
+}

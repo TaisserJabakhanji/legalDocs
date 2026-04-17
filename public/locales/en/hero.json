@@ -1,0 +1,33 @@
+{
+  "badge": "New ✨",
+  "title": "Create Legal Documents <highlight>Professionally</highlight> in Minutes",
+  "subtitle": "All-in-one platform to create contracts, agreements, and legal documents with ease. Lawyer-approved templates, 100% customizable, and compliant with local regulations.",
+  "cta_primary": "Get Started Free",
+  "cta_secondary": "Watch Demo",
+  "trust": "Trusted by over",
+  "stats": {
+    "templates": {
+      "value": "+500",
+      "label": "Legal Templates"
+    },
+    "users": {
+      "value": "+10K",
+      "label": "Active Users"
+    },
+    "rating": {
+      "value": "4.9/5",
+      "label": "User Rating"
+    }
+  },
+  "features": [
+    "Export to PDF & Word",
+    "Easy Live Editor",
+    "24/7 Support",
+    "Complete Privacy & Security"
+  ],
+  "video": {
+    "title": "How It Works?",
+    "duration": "2:30 min",
+    "play": "Play Video"
+  }
+}

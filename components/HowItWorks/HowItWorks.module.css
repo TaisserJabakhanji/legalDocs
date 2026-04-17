@@ -1,0 +1,486 @@
+/* =========================
+   HOW IT WORKS - Professional Section
+========================= */
+
+.section {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* الخلفية الزخرفية */
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gradientOrb {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 60%);
+  opacity: 0.08;
+  filter: blur(100px);
+  top: -200px;
+  right: -200px;
+  animation: floatOrb 12s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 30px) scale(1.05); }
+}
+
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-primary) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.2;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 70%);
+}
+
+/* الحاوية */
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* الهيدر */
+.header {
+  text-align: center;
+  max-width: 700px;
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.badgeIcon {
+  font-size: 1rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.highlight {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* شبكة الخطوات */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .stepsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* بطاقة الخطوة */
+.stepCard {
+  position: relative;
+  padding: 2rem 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.stepCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-primary);
+}
+
+/* رقم الخطوة */
+.stepNumber {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: white;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+  z-index: 5;
+}
+
+/* الأيقونة */
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBackground {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 1.75rem;
+  transition: transform 0.3s ease;
+}
+
+.stepCard:hover .iconBackground {
+  transform: scale(1.05);
+  border-color: var(--color-primary);
+}
+
+/* المحتوى */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stepDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* قائمة الميزات */
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: start;
+  width: 100%;
+  padding-inline-start: 0.5rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.featureCheck {
+  color: var(--success);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* خط التوصيل (للتصميم فقط) */
+.connector {
+  position: absolute;
+  top: 50%;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--border-primary), transparent);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .connector { display: none; }
+}
+
+/* الفوتر */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: white;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+}
+
+.ctaIcon {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.ctaButton:hover .ctaIcon {
+  transform: translateX(4px);
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.trustIcon {
+  font-size: 1.1rem;
+}
+
+/* =========================
+   SKELETON LOADING
+========================= */
+
+.skeleton {
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeletonCard {
+  pointer-events: none;
+}
+
+.skeletonStepNumber {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+}
+
+.skeletonIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: var(--bg-tertiary);
+}
+
+.skeletonContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.skeletonLine {
+  height: 16px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+.skeletonFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skeletonFeature {
+  height: 14px;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  width: 80%;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* =========================
+   RTL SUPPORT
+========================= */
+
+[dir="rtl"] .ctaIcon {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .ctaButton:hover .ctaIcon {
+  transform: rotate(180deg) translateX(4px);
+}
+
+[dir="rtl"] .featureList {
+  padding-inline-start: 0;
+  padding-inline-end: 0.5rem;
+}
+
+[dir="rtl"] .connector {
+  right: auto;
+  left: -50%;
+  background: linear-gradient(270deg, var(--border-primary), transparent);
+}
+
+/* =========================
+   DARK THEME ENHANCEMENTS
+========================= */
+
+[data-theme="dark"] .gradientOrb {
+  opacity: 0.12;
+}
+
+[data-theme="dark"] .gridPattern {
+  opacity: 0.1;
+}
+
+[data-theme="dark"] .stepCard {
+  border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .stepCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================
+   RESPONSIVE ADJUSTMENTS
+========================= */
+
+@media (max-width: 767px) {
+  .section {
+    padding: 4rem 1.5rem;
+  }
+
+  .container {
+    gap: 3rem;
+  }
+
+  .header {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .stepCard {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .stepTitle {
+    font-size: 1.125rem;
+  }
+
+  .stepDesc {
+    font-size: 0.9rem;
+  }
+
+  .ctaButton {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+/* =========================
+   ANIMATION UTILITIES
+========================= */
+
+.stepCard:nth-child(1) { animation-delay: 0.1s; }
+.stepCard:nth-child(2) { animation-delay: 0.25s; }
+.stepCard:nth-child(3) { animation-delay: 0.4s; }
+
+/* تحسين الأداء للأنيميشن */
+.stepCard,
+.iconBackground,
+.ctaButton,
+.ctaIcon {
+  will-change: transform;
+}
+

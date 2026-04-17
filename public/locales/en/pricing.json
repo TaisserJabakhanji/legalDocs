@@ -1,0 +1,105 @@
+{
+  "badge": "Flexible Plans for You 💎",
+  "title": "Choose the Plan That <highlight>Fits Your Needs</highlight>",
+  "subtitle": "All plans include free updates, basic support, and cancel anytime. Try free with no credit card required.",
+  "toggle": {
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save 20%"
+  },
+  "plans": {
+    "free": {
+      "name": "Free",
+      "desc": "Perfect for trying out and simple personal use",
+      "price_monthly": "0",
+      "price_yearly": "0",
+      "currency": "USD",
+      "period": "Forever free",
+      "cta": "Get Started Free",
+      "popular": false,
+      "features": [
+        "3 documents per month",
+        "5 basic templates",
+        "PDF export only",
+        "100MB cloud storage",
+        "Email support",
+        "Automatic security updates"
+      ],
+      "limitations": [
+        "No live support",
+        "No advanced customization",
+        "Watermark on documents"
+      ]
+    },
+    "basic": {
+      "name": "Basic",
+      "desc": "For professionals and freelancers who need more flexibility",
+      "price_monthly": "6.99",
+      "price_yearly": "5.59",
+      "currency": "USD",
+      "period": "per month",
+      "cta": "Subscribe Now",
+      "popular": false,
+      "features": [
+        "30 documents per month",
+        "50+ professional templates",
+        "PDF & Word export",
+        "5GB cloud storage",
+        "Live chat support",
+        "Remove watermark",
+        "Secure link sharing",
+        "Version history"
+      ],
+      "limitations": []
+    },
+    "pro": {
+      "name": "Pro",
+      "desc": "For teams and businesses needing advanced tools and AI",
+      "price_monthly": "19.99",
+      "price_yearly": "15.99",
+      "currency": "USD",
+      "period": "per month",
+      "cta": "Start Pro Plan",
+      "popular": true,
+      "features": [
+        "Unlimited documents",
+        "All templates + custom templates",
+        "Multi-format export (PDF, Word, DOCX)",
+        "Unlimited cloud storage",
+        "Priority 24/7 support",
+        "Custom branding & interface",
+        "Folders with permission controls",
+        "🤖 AI Legal Expert Chat",
+        "Auto document review",
+        "Google Drive & Dropbox integration",
+        "Certified e-signature",
+        "Advanced reports & analytics"
+      ],
+      "limitations": []
+    }
+  },
+  "faq_title": "Frequently Asked Questions",
+  "faq": [
+    {
+      "q": "Can I switch plans later?",
+      "a": "Yes, you can upgrade or downgrade anytime. Price differences are calculated pro-rata."
+    },
+    {
+      "q": "Is there a free trial?",
+      "a": "Yes, all paid plans include a 14-day free trial with no commitment."
+    },
+    {
+      "q": "How does the AI feature work?",
+      "a": "The AI Legal Expert is available in Pro plan only, providing instant answers to your legal questions based on an approved knowledge base."
+    },
+    {
+      "q": "Can I cancel my subscription anytime?",
+      "a": "Absolutely, no long-term contracts. You can cancel anytime from your dashboard."
+    }
+  ],
+  "trust": [
+    "Secure encrypted payments",
+    "30-day money-back guarantee",
+    "No hidden fees"
+  ]
+}

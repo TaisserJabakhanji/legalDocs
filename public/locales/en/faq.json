@@ -1,0 +1,26 @@
+{
+  "badge": "Have Questions? 💬",
+  "title": "Frequently Asked <highlight>Questions</highlight>",
+  "subtitle": "Quick answers to the most common questions. Didn't find what you're looking for? Contact our team.",
+  "categories": {
+    "general": "General",
+    "pricing": "Billing & Plans",
+    "technical": "Tech & Security",
+    "legal": "Legal & Documents"
+  },
+  "items": [
+    { "id": "q1", "category": "general", "question": "Is the platform really free?", "answer": "Yes, we offer a forever-free plan with 3 documents monthly. You can upgrade anytime for advanced features." },
+    { "id": "q2", "category": "general", "question": "Do I need legal expertise to use it?", "answer": "Not at all. The platform is designed to be intuitive and easy for both beginners and professionals." },
+    { "id": "q3", "category": "pricing", "question": "Can I get a refund after subscribing?", "answer": "Absolutely. We offer a full 30-day money-back guarantee if you're not satisfied with the service." },
+    { "id": "q4", "category": "pricing", "question": "Are prices in USD or my local currency?", "answer": "Prices are displayed in USD, but we support payments in multiple currencies via global payment gateways." },
+    { "id": "q5", "category": "technical", "question": "Are my data and documents secure?", "answer": "We use end-to-end encryption (AES-256) and never share your data. Our servers are ISO 27001 certified." },
+    { "id": "q6", "category": "technical", "question": "Does the site work on mobile devices?", "answer": "Yes, the platform is fully responsive and optimized for all modern devices and browsers." },
+    { "id": "q7", "category": "legal", "question": "Are the generated documents legally valid?", "answer": "Templates are drafted by certified lawyers and comply with local laws. We recommend reviewing them with your own legal advisor for complex cases." },
+    { "id": "q8", "category": "legal", "question": "Can I freely modify the templates?", "answer": "Yes, you can edit text, add custom clauses, and adjust formatting easily using our visual editor." }
+  ],
+  "contact": {
+    "text": "Didn't find your answer?",
+    "button": "Contact Support",
+    "response_time": "We usually reply within an hour"
+  }
+}

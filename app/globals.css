@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+/* =========================
+   LIGHT THEME (Default)
+========================= */
+
+:root {
+
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  /* Brand */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  /* Accent */
+  --color-accent: #0ea5e9;
+  --color-accent-hover: #0284c7;
+
+  /* Borders */
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5f5;
+
+  /* Status */
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  /* Card */
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  /* =========================
+     BUTTONS
+  ========================= */
+
+  --button-primary-bg: #2563eb;
+  --button-primary-hover: #1d4ed8;
+  --button-primary-text: #ffffff;
+
+  --button-secondary-bg: #e2e8f0;
+  --button-secondary-hover: #cbd5f5;
+  --button-secondary-text: #0f172a;
+
+  --button-outline-border: #2563eb;
+  --button-outline-text: #2563eb;
+  --button-outline-hover: #eff6ff;
+
+  --button-ghost-text: #0f172a;
+  --button-ghost-hover: #f1f5f9;
+
+  --button-danger-bg: #ef4444;
+  --button-danger-hover: #dc2626;
+  --button-danger-text: #ffffff;
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+[data-theme="dark"] {
+
+  /* Backgrounds */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5f5;
+  --text-muted: #94a3b8;
+
+  /* Brand */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+
+  /* Accent */
+  --color-accent: #38bdf8;
+  --color-accent-hover: #0ea5e9;
+
+  /* Borders */
+  --border-primary: #334155;
+  --border-secondary: #475569;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #facc15;
+  --error: #f87171;
+
+  /* Card */
+  --card-bg: #1e293b;
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.4);
+
+  /* =========================
+     BUTTONS
+  ========================= */
+
+  --button-primary-bg: #3b82f6;
+  --button-primary-hover: #2563eb;
+  --button-primary-text: #ffffff;
+
+  --button-secondary-bg: #334155;
+  --button-secondary-hover: #475569;
+  --button-secondary-text: #f8fafc;
+
+  --button-outline-border: #3b82f6;
+  --button-outline-text: #3b82f6;
+  --button-outline-hover: #1e293b;
+
+  --button-ghost-text: #f8fafc;
+  --button-ghost-hover: #334155;
+
+  --button-danger-bg: #f87171;
+  --button-danger-hover: #ef4444;
+  --button-danger-text: #ffffff;
+}
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+body {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+/* =========================
+   BUTTON BASE
+========================= */
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Primary */
+
+.btn-primary {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+.btn-primary:hover {
+  background: var(--button-primary-hover);
+}
+
+/* Secondary */
+
+.btn-secondary {
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+.btn-secondary:hover {
+  background: var(--button-secondary-hover);
+}
+
+/* Outline */
+
+.btn-outline {
+  border: 1px solid var(--button-outline-border);
+  color: var(--button-outline-text);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--button-outline-hover);
+}
+
+/* Ghost */
+
+.btn-ghost {
+  background: transparent;
+  color: var(--button-ghost-text);
+}
+
+.btn-ghost:hover {
+  background: var(--button-ghost-hover);
+}
+
+/* Danger */
+
+.btn-danger {
+  background: var(--button-danger-bg);
+  color: var(--button-danger-text);
+}
+
+.btn-danger:hover {
+  background: var(--button-danger-hover);
+}
+
+/* =========================
+   COMPONENTS
+========================= */
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+}
+
+input,
+textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+
+/* تحسين مظهر زر التبديل */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.theme-toggle-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+/* ✅ global.css - قواعد وصول عالمية */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ✅ app/globals.css - قواعد وصول عالمية */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

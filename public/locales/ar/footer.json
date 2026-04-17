@@ -1,0 +1,49 @@
+{
+  "brand": "المستندات القانونية",
+  "description": "منصة متكاملة لإنشاء وإدارة المستندات القانونية باحترافية. معتمدة من خبراء القانون ومتوافقة مع الأنظمة المحلية.",
+  "newsletter": {
+    "title": "انضم إلى نشرة البريدية",
+    "desc": "احصل على قوالب جديدة، نصائح قانونية، وعروض حصرية مباشرة في بريدك.",
+    "placeholder": "أدخل بريدك الإلكتروني",
+    "button": "اشترك",
+    "success": "تم الاشتراك بنجاح! 🎉",
+    "error": "بريد غير صالح، يرجى المحاولة."
+  },
+  "columns": [
+    {
+      "title": "المنصة",
+      "links": [
+        { "label": "القوالب", "href": "/templates" },
+        { "label": "الأسعار", "href": "/pricing" },
+        { "label": "الميزات", "href": "/features" },
+        { "label": "الأمان", "href": "/security" }
+      ]
+    },
+    {
+      "title": "الشركة",
+      "links": [
+        { "label": "من نحن", "href": "/about" },
+        { "label": "المدونة", "href": "/blog" },
+        { "label": "وظائف", "href": "/careers" },
+        { "label": "تواصل معنا", "href": "/contact" }
+      ]
+    },
+    {
+      "title": "القانوني والدعم",
+      "links": [
+        { "label": "مركز المساعدة", "href": "/help" },
+        { "label": "شروط الاستخدام", "href": "/terms" },
+        { "label": "سياسة الخصوصية", "href": "/privacy" },
+        { "label": "إخلاء المسؤولية", "href": "/disclaimer" }
+      ]
+    }
+  ],
+  "socials": [
+    { "platform": "twitter", "url": "https://twitter.com", "label": "تويتر" },
+    { "platform": "linkedin", "url": "https://linkedin.com", "label": "لينكدإن" },
+    { "platform": "github", "url": "https://github.com", "label": "جيثب" },
+    { "platform": "youtube", "url": "https://youtube.com", "label": "يوتيوب" }
+  ],
+  "copyright": "© {year} {brand}. جميع الحقوق محفوظة.",
+  "back_to_top": "العودة للأعلى"
+}

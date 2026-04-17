@@ -1,0 +1,167 @@
+/* =========================
+   FEATURES SECTION
+========================= */
+
+.section {
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.bgOrb {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 60%);
+  opacity: 0.06;
+  filter: blur(120px);
+  bottom: -150px;
+  left: -150px;
+  pointer-events: none;
+  animation: floatOrb 15s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+  from { transform: translate(0, 0); }
+  to { transform: translate(40px, -40px); }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 4rem;
+  animation: fadeInUp 0.6s ease;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Grid Responsive */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Card */
+.card {
+  position: relative;
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow);
+  border-color: var(--color-primary);
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .iconBox {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Skeleton */
+.skeleton { background: var(--bg-tertiary); border-radius: 8px; animation: pulse 1.5s infinite; }
+.skeletonGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.skeletonCard { height: 220px; padding: 2rem; background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-primary); display: flex; flex-direction: column; gap: 1rem; }
+.skeletonIcon { width: 48px; height: 48px; border-radius: 12px; }
+.skeletonLine { height: 16px; background: var(--bg-tertiary); border-radius: 6px; }
+.skeletonLineShort { width: 60%; height: 14px; background: var(--bg-tertiary); border-radius: 6px; }
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* RTL / Directional Auto-Support */
+/* CSS Grid & Flexbox يتعاملان تلقائياً مع dir="rtl" */
+/* لا حاجة لكتابة قواعد إضافية للاتجاه */
+
+/* Dark Theme Tweaks */
+[data-theme="dark"] .bgOrb { opacity: 0.1; }
+[data-theme="dark"] .card { border-color: var(--border-secondary); }
+[data-theme="dark"] .card:hover { border-color: var(--color-primary); box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section { padding: 4rem 1.25rem; }
+  .header { margin-bottom: 2.5rem; }
+  .card { padding: 1.5rem; }
+}

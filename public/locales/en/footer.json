@@ -1,0 +1,49 @@
+{
+  "brand": "Legal Docs",
+  "description": "All-in-one platform to create and manage professional legal documents. Lawyer-approved and locally compliant.",
+  "newsletter": {
+    "title": "Join the Newsletter",
+    "desc": "Get new templates, legal tips, and exclusive offers delivered to your inbox.",
+    "placeholder": "Enter your email",
+    "button": "Subscribe",
+    "success": "Subscribed successfully! 🎉",
+    "error": "Invalid email, please try again."
+  },
+  "columns": [
+    {
+      "title": "Platform",
+      "links": [
+        { "label": "Templates", "href": "/templates" },
+        { "label": "Pricing", "href": "/pricing" },
+        { "label": "Features", "href": "/features" },
+        { "label": "Security", "href": "/security" }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About Us", "href": "/about" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Careers", "href": "/careers" },
+        { "label": "Contact", "href": "/contact" }
+      ]
+    },
+    {
+      "title": "Legal & Support",
+      "links": [
+        { "label": "Help Center", "href": "/help" },
+        { "label": "Terms of Use", "href": "/terms" },
+        { "label": "Privacy Policy", "href": "/privacy" },
+        { "label": "Disclaimer", "href": "/disclaimer" }
+      ]
+    }
+  ],
+  "socials": [
+    { "platform": "twitter", "url": "https://twitter.com", "label": "Twitter" },
+    { "platform": "linkedin", "url": "https://linkedin.com", "label": "LinkedIn" },
+    { "platform": "github", "url": "https://github.com", "label": "GitHub" },
+    { "platform": "youtube", "url": "https://youtube.com", "label": "YouTube" }
+  ],
+  "copyright": "© {year} {brand}. All rights reserved.",
+  "back_to_top": "Back to Top"
+}

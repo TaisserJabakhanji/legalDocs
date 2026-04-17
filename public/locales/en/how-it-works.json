@@ -1,0 +1,30 @@
+{
+  "badge": "Simple & Fast ✨",
+  "title": "Create Your Legal Document in <highlight>Just 3 Steps</highlight>",
+  "subtitle": "No legal expertise required. Our platform is designed to be intuitive and easy, while ensuring professionalism and full legal compliance.",
+  "steps": [
+    {
+      "step": "01",
+      "icon": "search",
+      "title": "Choose the Right Template",
+      "desc": "Browse our library of 500+ lawyer-approved legal templates. Use smart filters to find what you need in seconds.",
+      "features": ["Smart Search", "Category Filters", "Instant Preview"]
+    },
+    {
+      "step": "02",
+      "icon": "edit",
+      "title": "Customize with Ease",
+      "desc": "An intuitive visual editor lets you edit text, add your details, and adjust formatting without any technical complexity.",
+      "features": ["Drag & Drop", "Live Editing", "Auto-Save"]
+    },
+    {
+      "step": "03",
+      "icon": "download",
+      "title": "Export & Share Instantly",
+      "desc": "Export your document in multiple formats (PDF, Word, DOCX) with optional digital signature, and share via secure link.",
+      "features": ["Multi-Format Export", "E-Signature", "Secure Share Link"]
+    }
+  ],
+  "cta": "Get Started Free",
+  "trust_badge": "Trusted by Lawyers & Legal Advisors"
+}
