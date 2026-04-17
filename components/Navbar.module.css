@@ -114,6 +114,7 @@
     padding: 1rem 0;
     background: var(--bg-tertiary);
     text-align: center;
+    margin-top: 4rem;
 
     /* Animation */
     max-height: 0;
