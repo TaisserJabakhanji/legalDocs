@@ -8,41 +8,49 @@ import { FeatureCard } from "./FeatureCard";
 export function Features() {
   const { t, isLoaded } = useTranslation("features");
 
+  // ✅ عرض Skeleton أثناء تحميل الترجمات
   if (!isLoaded) {
     return <FeaturesSkeleton />;
   }
 
   return (
     <section className={styles.section} id="features">
+      {/* خلفية زخرفية */}
       <div className={styles.bgOrb} />
+      
       <div className={styles.container}>
         <header className={styles.header}>
           <div className={styles.badge}>
-            <span>🚀</span> {t("badge")}
+            {/* ✅ الحل: إضافة as string لأن التوكن يُرجع unknown */}
+            <span>🚀</span> {t("badge") as string}
           </div>
           
           <h2 className={styles.title}>
-            {t("title").split(/(<highlight>.*?<\/highlight>)/g).map((part, i) =>
-              part.startsWith("<highlight>") ? (
-                <span key={i} className={styles.highlight}>
-                  {part.replace(/<\/?highlight>/g, "")}
-                </span>
-              ) : (
-                <span key={i}>{part}</span>
-              )
-            )}
+            {/* ✅ تحويل النتيجة لنص قبل التعامل معها */}
+            {(t("title") as string)
+              .split(/(<highlight>.*?<\/highlight>)/g)
+              .map((part: string, i: number) =>
+                part.startsWith("<highlight>") ? (
+                  <span key={i} className={styles.highlight}>
+                    {part.replace(/<\/?highlight>/g, "")}
+                  </span>
+                ) : (
+                  <span key={i}>{part}</span>
+                ),
+              )}
           </h2>
           
-          <p className={styles.subtitle}>{t("subtitle")}</p>
+          <p className={styles.subtitle}>{t("subtitle") as string}</p>
         </header>
 
         <div className={styles.grid}>
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <FeatureCard
               key={i}
-              icon={t(`features.${i}.icon`)}
-              title={t(`features.${i}.title`)}
-              desc={t(`features.${i}.desc`)}
+              // ✅ إضافة as string لكل النصوص المعروضة
+              icon={t(`features.${i}.icon`) as string}
+              title={t(`features.${i}.title`) as string}
+              desc={t(`features.${i}.desc`) as string}
               index={i}
             />
           ))}
@@ -52,7 +60,7 @@ export function Features() {
   );
 }
 
-// Skeleton مدمج لتبسيط الملفات
+// ✅ Skeleton مدمج لتبسيط الملفات
 function FeaturesSkeleton() {
   return (
     <section className={styles.section}>

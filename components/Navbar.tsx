@@ -1,3 +1,4 @@
+// components/Navbar.tsx
 "use client";
 
 import Link from "next/link";
@@ -52,13 +53,16 @@ export function Navbar() {
       {/* Main Navbar */}
       <nav className={styles.navbar}>
         <Link href="/" className={styles.logo}>
-          {isLoaded ? t("title") : "..."}
+          {/* ✅ الحل: إضافة as string لأن t() تُرجع unknown */}
+          {isLoaded ? (t("title") as string) : "..."}
         </Link>
         
         <ul className={styles.navLinks}>
           {NAV_LINKS.map((link) => (
             <li key={link.key}>
-              <Link href={link.href}>{isLoaded ? t(link.key) : "..."}</Link>
+              <Link href={link.href}>
+                {isLoaded ? (t(link.key) as string) : "..."}
+              </Link>
             </li>
           ))}
         </ul>
@@ -78,7 +82,7 @@ export function Navbar() {
           </div>
           
           <button className={styles.loginButton}>
-            {isLoaded ? t("cta") : "..."}
+            {isLoaded ? (t("cta") as string) : "..."}
           </button>
         </div>
       </nav>
@@ -86,7 +90,7 @@ export function Navbar() {
       {/* Mobile Navbar */}
       <nav className={styles.mobileNavbar}>
         <Link href="/" className={styles.logo}>
-          {isLoaded ? t("title") : "..."}
+          {isLoaded ? (t("title") as string) : "..."}
         </Link>
         
         {isMobileMenuOpen ? (
@@ -101,6 +105,7 @@ export function Navbar() {
         ref={menuRef}
         className={`${styles.mobileNavLinks} ${isMobileMenuOpen ? styles.open : ""}`}
       >
+        <li className={styles.mobileAction}>
           <button
             onClick={() => {
               changeLanguage(locale === "ar" ? "en" : "ar");
@@ -110,19 +115,20 @@ export function Navbar() {
           >
             <FiGlobe /> {locale === "ar" ? "En" : "Ar"}
           </button>
+        </li>
         
         <ThemeToggle />
         
         {NAV_LINKS.map((link) => (
           <li key={link.key}>
             <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
-              {isLoaded ? t(link.key) : "..."}
+              {isLoaded ? (t(link.key) as string) : "..."}
             </Link>
           </li>
         ))}
         
         <button className={styles.loginButton} onClick={() => setIsMobileMenuOpen(false)}>
-          {isLoaded ? t("cta") : "..."}
+          {isLoaded ? (t("cta") as string) : "..."}
         </button>
       </ul>
     </>

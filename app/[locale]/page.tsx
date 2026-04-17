@@ -1,7 +1,7 @@
 // app/[locale]/page.tsx
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero/Hero";
-import { HowItWorks } from "@/components/HowItWorks";
+import { HowItWorks } from "@/components/HowItWorks/HowItWorks";
 import { Features } from "@/components/Features/Features";
 import { Pricing } from "@/components/Pricing/Pricing";
 import { FAQ } from "@/components/FAQ/FAQ";
@@ -14,9 +14,8 @@ import {
   generateFAQSchema,
   generateWebSiteSchema 
 } from "@/lib/schema/generators";
-import type { Metadata } from "next";
 
-// ... باقي الـ imports ...
+import type { Metadata } from "next";
 
 // دالة مساعدة لجلب بيانات الـ Schema
 async function getSchemaData(locale: string) {
@@ -26,21 +25,35 @@ async function getSchemaData(locale: string) {
     {
       name: isAr ? "مجاني" : "Free",
       description: isAr ? "مثالي للتجربة" : "Perfect for trying out",
-      priceSpec: { price: "0", priceCurrency: "USD" },
+      price_monthly: "0",
+      price_yearly: "0",
+      currency: "USD",
+      period: "",
       features: isAr ? ["3 مستندات شهرياً", "تصدير PDF"] : ["3 docs/month", "PDF export"],
+      popular: false,
+      cta: isAr ? "ابدأ مجاناً" : "Get Started Free",
     },
     {
       name: isAr ? "أساسي" : "Basic",
       description: isAr ? "للمحترفين" : "For professionals",
-      priceSpec: { price: "6.99", priceCurrency: "USD", billingPeriod: "P1M" },
+      price_monthly: "6.99",
+      price_yearly: "5.59",
+      currency: "USD",
+      period: "لكل شهر",
       features: isAr ? ["30 مستند شهرياً", "دعم عبر الدردشة"] : ["30 docs/month", "Live chat"],
+      popular: false,
+      cta: isAr ? "اشترك الآن" : "Subscribe Now",
     },
     {
       name: isAr ? "محترف" : "Pro",
       description: isAr ? "للفرق والشركات" : "For teams and businesses",
-      priceSpec: { price: "19.99", priceCurrency: "USD", billingPeriod: "P1M" },
+      price_monthly: "19.99",
+      price_yearly: "15.99",
+      currency: "USD",
+      period: "لكل شهر",
       features: isAr ? ["مستندات غير محدودة", "🤖 خبير قانوني ذكي"] : ["Unlimited docs", "🤖 AI Legal Expert"],
-      isPopular: true,
+      popular: true,
+      cta: isAr ? "ابدأ الخطة الاحترافية" : "Start Pro Plan",
     }
   ];
 
@@ -58,6 +71,50 @@ async function getSchemaData(locale: string) {
   return { plans, faqItems };
 }
 
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === "ar";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
+  return {
+    metadataBase: new URL(baseUrl),
+    title: {
+      template: isAr ? "%s | المستندات القانونية" : "%s | Legal Docs",
+      default: isAr ? "المستندات القانونية - أنشئ عقودك في دقائق" : "Legal Docs - Create Contracts in Minutes",
+    },
+    description: isAr
+      ? "منصة احترافية لإنشاء المستندات القانونية المعتمدة. قوالب جاهزة، تعديل سهل، وتصدير فوري."
+      : "Professional platform for creating legal documents. Ready templates, easy editing, instant export.",
+    keywords: isAr
+      ? ["مستندات قانونية", "عقود", "قوالب قانونية", "محاماة", "توقيع إلكتروني", "قانون"]
+      : ["legal documents", "contracts", "legal templates", "lawyer", "e-signature", "legal tech"],
+    authors: [{ name: isAr ? "فريق المستندات القانونية" : "Legal Docs Team" }],
+    creator: "Legal Docs",
+    publisher: "Legal Docs",
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        ar: "/ar",
+        en: "/en",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale,
+      siteName: isAr ? "المستندات القانونية" : "Legal Docs",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@legalDocs",
+      creator: "@legalDocs",
+    },
+  };
+}
+
 export default async function Home({ 
   params 
 }: { 
@@ -65,15 +122,14 @@ export default async function Home({
 }) {
   const { locale } = await params;
   
-  // ✅ 1. تعريف السياق الصحيح (4 خصائص فقط)
+  // ✅ تعريف السياق الصحيح لـ Schema
   const ctx = {
     locale: locale as "ar" | "en",
     baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
     brandName: locale === "ar" ? "المستندات القانونية" : "Legal Docs",
-    currency: "USD", // ✅ ضروري جداً
+    currency: "USD",
   };
 
-  // ✅ 2. جلب البيانات بشكل منفصل
   const { plans, faqItems } = await getSchemaData(locale);
 
   return (
@@ -82,13 +138,47 @@ export default async function Home({
       <JsonLd data={generateWebSiteSchema(ctx)} key="website" />
       <JsonLd data={generateSoftwareSchema(ctx)} key="software" />
       
-      {/* ✅ Schema لكل خطة */}
-      {plans.map((plan, index) => (
-        <JsonLd
-          key={`plan-${index}`}
-          data={generateProductSchema(plan, ctx)} // ✅ ctx منفصل عن plan
-        />
-      ))}
+      {/* ✅ Schema لكل خطة (شهري + سنوي) لأفضل تحسين لـ SEO */}
+      {plans.map((plan, index) => {
+        // ✅ توليد Schema للخطة الشهرية
+        const monthlySchema = generateProductSchema(
+          {
+            name: plan.name,
+            description: plan.description,
+            priceSpec: {
+              price: plan.price_monthly,
+              priceCurrency: plan.currency,
+              billingPeriod: "P1M" as const, // ✅ شهري
+            },
+            features: plan.features,
+            isPopular: Boolean(plan.popular),
+          },
+          ctx
+        );
+
+        // ✅ توليد Schema للخطة السنوية (إذا كان السعر مختلف)
+        const yearlySchema = generateProductSchema(
+          {
+            name: plan.name,
+            description: plan.description,
+            priceSpec: {
+              price: plan.price_yearly,
+              priceCurrency: plan.currency,
+              billingPeriod: "P1Y" as const, // ✅ سنوي
+            },
+            features: plan.features,
+            isPopular: Boolean(plan.popular),
+          },
+          ctx
+        );
+
+        return (
+          <div key={`plan-${index}`}>
+            <JsonLd key={`plan-${index}-monthly`} data={monthlySchema} />
+            <JsonLd key={`plan-${index}-yearly`} data={yearlySchema} />
+          </div>
+        );
+      })}
       
       {/* ✅ Schema للأسئلة الشائعة */}
       <JsonLd 
@@ -96,13 +186,16 @@ export default async function Home({
         key="faq" 
       />
 
+      {/* باقي محتوى الصفحة */}
       <Navbar />
-      <Hero />
-      <HowItWorks />
-      <Features />
-      <Pricing />
-      <FAQ />
-      <CTA />
+      <main>
+        <Hero />
+        <HowItWorks />
+        <Features />
+        <Pricing />
+        <FAQ />
+        <CTA />
+      </main>
       <Footer />
     </>
   );

@@ -13,14 +13,15 @@ export function Hero() {
   const { t, locale, isLoaded } = useTranslation("hero");
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
+  // ✅ عرض Skeleton أثناء تحميل الترجمات
   if (!isLoaded) {
     return <HeroSkeleton />;
   }
 
-  // ✅ معالجة العنوان مع دعم <highlight>
+  // ✅ معالجة العنوان مع دعم <highlight> - مع تحديد نوع النص
   const renderTitle = (text: string) => {
     const parts = text.split(/(<highlight>.*?<\/highlight>)/g);
-    return parts.map((part, i) => {
+    return parts.map((part: string, i: number) => {
       if (part.startsWith("<highlight>")) {
         const content = part.replace(/<\/?highlight>/g, "");
         return (
@@ -47,23 +48,25 @@ export function Hero() {
           {/* الشعار العلوي */}
           <div className={styles.badge}>
             <span className={styles.badgeIcon}>✨</span>
-            {t("badge")}
+            {/* ✅ الحل: إضافة as string لأن t() تُرجع unknown */}
+            {t("badge") as string}
           </div>
 
           {/* العنوان الرئيسي */}
           <h1 className={styles.title}>
-            {renderTitle(t("title"))}
+            {/* ✅ تحويل النتيجة لنص قبل المعالجة */}
+            {renderTitle(t("title") as string)}
           </h1>
 
           {/* الوصف */}
           <p className={styles.subtitle}>
-            {t("subtitle")}
+            {t("subtitle") as string}
           </p>
 
           {/* أزرار الدعوة للإجراء */}
           <div className={styles.actions}>
             <Link href="/signup" className={styles.btnPrimary}>
-              {t("cta_primary")}
+              {t("cta_primary") as string}
               <FiArrowRight className={styles.btnIcon} />
             </Link>
             
@@ -72,7 +75,7 @@ export function Hero() {
               className={styles.btnSecondary}
             >
               <FiPlay className={styles.playIcon} />
-              {t("cta_secondary")}
+              {t("cta_secondary") as string}
             </button>
           </div>
 
@@ -81,22 +84,22 @@ export function Hero() {
             {Array.from({ length: 4 }).map((_, i) => (
               <li key={i} className={styles.feature}>
                 <FiCheck className={styles.featureIcon} />
-                <span>{t(`features.${i}`)}</span>
+                <span>{t(`features.${i}`) as string}</span>
               </li>
             ))}
           </ul>
 
           {/* إحصائيات الثقة */}
           <div className={styles.trust}>
-            <span className={styles.trustText}>{t("trust")}</span>
+            <span className={styles.trustText}>{t("trust") as string}</span>
             <div className={styles.stats}>
               {["templates", "users", "rating"].map((key) => (
                 <div key={key} className={styles.stat}>
                   <span className={styles.statValue}>
-                    {t(`stats.${key}.value`)}
+                    {t(`stats.${key}.value`) as string}
                   </span>
                   <span className={styles.statLabel}>
-                    {t(`stats.${key}.label`)}
+                    {t(`stats.${key}.label`) as string}
                   </span>
                 </div>
               ))}
@@ -145,7 +148,7 @@ export function Hero() {
       {/* مودال الفيديو */}
       {isVideoModalOpen && (
         <VideoModal 
-          title={t("video.title")}
+          title={t("video.title") as string}
           onClose={() => setIsVideoModalOpen(false)}
         />
       )}
